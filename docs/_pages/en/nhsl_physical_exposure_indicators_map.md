@@ -69,7 +69,7 @@ crossorigin=""></script>
 	});
 
 	var natural_hazards_building_exposure_model = L.esri.featureLayer({
-		url: 'https://maps-cartes.services.geo.ca/server_serveur/rest/services/NRCan/nhsl_en/MapServer/7',
+		url: 'https://maps-cartes.services.geo.ca/server_serveur/rest/services/NRCan/physical_exposure_en/MapServer/0',
 		simplifyFactor: 0.25,
 		precision: 5,
     minZoom: 10,
@@ -94,7 +94,7 @@ crossorigin=""></script>
   });
 
 	var landuse = L.esri.featureLayer({
-		url: 'https://maps-cartes.services.geo.ca/server_serveur/rest/services/NRCan/nhsl_en/MapServer/8',
+		url: 'https://maps-cartes.services.geo.ca/server_serveur/rest/services/NRCan/physical_exposure_en/MapServer/1',
 		simplifyFactor: 0.25,
 		precision: 5,
     minZoom: 10,
