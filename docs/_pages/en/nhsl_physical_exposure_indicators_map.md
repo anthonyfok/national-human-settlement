@@ -117,79 +117,6 @@ crossorigin=""></script>
 		showAttributes( e, landuse );
   });
 
-  var population_density = L.esri.featureLayer({
-		url: 'https://maps-cartes.services.geo.ca/server_serveur/rest/services/NRCan/nhsl_en/MapServer/9',
-		simplifyFactor: 0.25,
-		precision: 5,
-    minZoom: 10,
-		fields: [ 'OBJECTID', 'Et_PopNight___E_AreaHa' ]
-  }).on( 'load', function ( e ) {
-		this.metadata( function ( error, metadata ) {
-			buildLegend( metadata );
-		});
-		$( '#modal' ).remove();
-	}).on( 'loading', function ( e ) {
-		$( '#map' ).before( '<div id="modal"></div>' );
-	}).bindPopup( function ( layer ) {
-    	return L.Util.template( '<p>Population density: <strong>{Et_PopNight___E_AreaHa}</strong></p>', layer.feature.properties );
-  }).on('add', function ( e ) {
-    if ( oldId && oldLayer) {
-		  $( '#sidebar' ).html( '' );
-      oldLayer.resetFeatureStyle( oldId );
-    }
-  }).on('click', function ( e ) {
-		showAttributes( e, population_density );
-  });
-
-  var building_assets_per_hectare = L.esri.featureLayer({
-		url: 'https://maps-cartes.services.geo.ca/server_serveur/rest/services/NRCan/nhsl_en/MapServer/10',
-		simplifyFactor: 0.25,
-		precision: 5,
-    minZoom: 10,
-		fields: [ 'OBJECTID', 'Et_AssetValue___E_AreaHa' ]
-  }).on( 'load', function ( e ) {
-		this.metadata( function ( error, metadata ) {
-			buildLegend( metadata );
-		});
-		$( '#modal' ).remove();
-	}).on( 'loading', function ( e ) {
-		$( '#map' ).before( '<div id="modal"></div>' );
-	}).bindPopup( function ( layer ) {
-    	var assetval =  L.Util.template( '{Et_AssetValue___E_AreaHa}', layer.feature.properties );
-      return '<p>Building assets per hectare: <strong>' + formatter.format(assetval) + '</strong></p>';
-  }).on('add', function ( e ) {
-    if ( oldId && oldLayer) {
-		  $( '#sidebar' ).html( '' );
-      oldLayer.resetFeatureStyle( oldId );
-    }
-  }).on('click', function ( e ) {
-		showAttributes( e, building_assets_per_hectare );
-  });
-
-	var building_density = L.esri.featureLayer({
-		url: 'https://maps-cartes.services.geo.ca/server_serveur/rest/services/NRCan/nhsl_en/MapServer/11',
-		simplifyFactor: 0.25,
-		precision: 5,
-    minZoom: 10,
-		fields: [ 'OBJECTID', 'Et_BldgNum___E_AreaHa' ]
-	}).on( 'load', function ( e ) {
-		this.metadata( function ( error, metadata ) {
-			buildLegend( metadata );
-		});
-		$( '#modal' ).remove();
-	}).on( 'loading', function ( e ) {
-		$( '#map' ).before( '<div id="modal"></div>' );
-	}).bindPopup( function ( layer ) {
-    return L.Util.template( '<p>Building density: <strong>{Et_BldgNum___E_AreaHa}</strong></p>', layer.feature.properties );
-  }).on('add', function ( e ) {
-    if ( oldId && oldLayer) {
-		  $( '#sidebar' ).html( '' );
-      oldLayer.resetFeatureStyle( oldId );
-    }
-  }).on('click', function ( e ) {
-		showAttributes( e, building_density );
-  });
-
   var map = L.map( 'map', {
     fullscreenControl: true,
     center: [ 49.2827, -123.1207 ],
@@ -208,9 +135,9 @@ crossorigin=""></script>
 
   var overlays = {
     'Landuse': landuse,
-    'Population Density': population_density,
-    'Building Assets per Hectare': building_assets_per_hectare,
-    'Building Density': building_density,
+    // 'Population Density': population_density,
+    // 'Building Assets per Hectare': building_assets_per_hectare,
+    // 'Building Density': building_density,
     // 'Natural Hazards Building Exposure Model': natural_hazards_building_exposure_model
   };
 
