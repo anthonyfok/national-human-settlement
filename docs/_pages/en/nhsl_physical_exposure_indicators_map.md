@@ -135,9 +135,6 @@ crossorigin=""></script>
 
   var overlays = {
     'Landuse': landuse,
-    // 'Population Density': population_density,
-    // 'Building Assets per Hectare': building_assets_per_hectare,
-    // 'Building Density': building_density,
     // 'Natural Hazards Building Exposure Model': natural_hazards_building_exposure_model
   };
 
