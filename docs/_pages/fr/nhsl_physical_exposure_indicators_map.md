@@ -70,7 +70,7 @@ crossorigin=""></script>
 	});
 
 	var natural_hazards_building_exposure_model = L.esri.featureLayer({
-		url: 'https://maps-cartes.services.geo.ca/server_serveur/rest/services/NRCan/physical_exposure_en/MapServer/0',
+		url: 'https://maps-cartes.services.geo.ca/server_serveur/rest/services/NRCan/physical_exposure_fr/MapServer/0',
 		simplifyFactor: 0.25,
 		precision: 5,
     minZoom: 10,
